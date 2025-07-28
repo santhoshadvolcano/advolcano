@@ -13,7 +13,7 @@ export default function RTBPage() {
         
         <div className="relative z-10 text-center">
           <h1 className="text-8xl font-bold mb-8 bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 bg-clip-text text-transparent drop-shadow-2xl animate-pulse">
-            Coming Soon
+            Coming soon
           </h1>
           <p className="text-2xl text-white font-semibold drop-shadow-lg mb-4">
             RTB Platform
