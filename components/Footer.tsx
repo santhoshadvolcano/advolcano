@@ -33,7 +33,7 @@ export default function Footer() {
             <ul className="space-y-4 text-slate-400">
               <li><Link href="/advertiser" className="hover:text-white transition-colors cursor-pointer">Advertiser</Link></li>
               <li><Link href="/publisher" className="hover:text-white transition-colors cursor-pointer">Publisher</Link></li>
-              <li><a href="#" className="hover:text-white transition-colors cursor-pointer">RTB</a></li>
+              <li><a href="/" className="hover:text-white transition-colors cursor-pointer">RTB</a></li>
               <li><Link href="/ad-formats/detailed" className="hover:text-white transition-colors cursor-pointer">Solutions</Link></li>
             </ul>
           </div>
