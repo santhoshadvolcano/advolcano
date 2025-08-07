@@ -1,22 +1,29 @@
-
 'use client';
 
-import { useState } from 'react';
+import { useState, ChangeEvent, FormEvent } from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
+interface FormData {
+  interest: string;
+  fullName: string;
+  email: string;
+  company: string;
+  message: string;
+}
+
 export default function DemoPage() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     interest: '',
     fullName: '',
     email: '',
     company: '',
     message: ''
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [submitStatus, setSubmitStatus] = useState<string>('');
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -24,7 +31,7 @@ export default function DemoPage() {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus('');
