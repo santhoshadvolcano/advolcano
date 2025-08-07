@@ -30,7 +30,7 @@ export default function Header() {
             <Link href="/publisher" className={`font-medium whitespace-nowrap cursor-pointer transition-colors ${pathname === '/publisher' ? 'text-blue-600' : 'text-slate-600 hover:text-slate-900'}`}>
               Publisher
             </Link>
-            <a href="https://readdy.link/share/49f97a07ab504eeaa721c3bca041c48c" className={`font-medium whitespace-nowrap cursor-pointer transition-colors ${pathname === '/rtb' ? 'text-blue-600' : 'text-slate-600 hover:text-slate-900'}`}>
+            <a href="#" className={`font-medium whitespace-nowrap cursor-pointer transition-colors ${pathname === '/rtb' ? 'text-blue-600' : 'text-slate-600 hover:text-slate-900'}`}>
               RTB
             </a>
             <Link href="/paypercall" className={`font-medium whitespace-nowrap cursor-pointer transition-colors ${pathname === '/paypercall' ? 'text-blue-600' : 'text-slate-600 hover:text-slate-900'}`}>
@@ -76,7 +76,7 @@ export default function Header() {
               <Link href="/publisher" className={`font-medium whitespace-nowrap cursor-pointer ${pathname === '/publisher' ? 'text-blue-600' : 'text-slate-600 hover:text-slate-900'}`}>
                 Publisher
               </Link>
-              <a href="https://readdy.link/share/49f97a07ab504eeaa721c3bca041c48c" className={`font-medium whitespace-nowrap cursor-pointer ${pathname === '/rtb' ? 'text-blue-600' : 'text-slate-600 hover:text-slate-900'}`}>
+              <a href="" className={`font-medium whitespace-nowrap cursor-pointer ${pathname === '/rtb' ? 'text-blue-600' : 'text-slate-600 hover:text-slate-900'}`}>
                 RTB
               </a>
               <Link href="/paypercall" className={`font-medium whitespace-nowrap cursor-pointer ${pathname === '/paypercall' ? 'text-blue-600' : 'text-slate-600 hover:text-slate-900'}`}>
