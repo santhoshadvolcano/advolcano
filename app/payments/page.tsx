@@ -1,10 +1,20 @@
-
 'use client';
 
+import { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 export default function PaymentsPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    amount: ''
+  });
+
+  // Current USD to INR exchange rate (you might want to fetch this from an API)
+  const USD_TO_INR_RATE = 87.65;
+
   const paymentMethods = [
     {
       icon: 'ri-wallet-line',
@@ -22,7 +32,8 @@ export default function PaymentsPage() {
       icon: 'ri-bank-card-line',
       title: 'Credit/Debit Card',
       description: 'Visa, Mastercard, American Express',
-      logo: 'https://readdy.ai/api/search-image?query=Credit%20card%20payment%20logos%20Visa%20Mastercard%20American%20Express%20brand%20identity%20white%20background%20modern%20clean%20design&width=120&height=60&seq=creditcard-logo-001&orientation=landscape'
+      logo: 'https://readdy.ai/api/search-image?query=Credit%20card%20payment%20logos%20Visa%20Mastercard%20American%20Express%20brand%20identity%20white%20background%20modern%20clean%20design&width=120&height=60&seq=creditcard-logo-001&orientation=landscape',
+      hasModal: true
     },
     {
       icon: 'ri-bank-line',
@@ -38,6 +49,51 @@ export default function PaymentsPage() {
     }
   ];
 
+  const handleCardClick = (method: any) => {
+    if (method.hasModal) {
+      setIsModalOpen(true);
+    }
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = () => {
+    // Basic validation
+    if (!formData.name.trim() || !formData.email.trim() || !formData.amount) {
+      alert('Please fill in all required fields');
+      return;
+    }
+
+    if (parseFloat(formData.amount) <= 0) {
+      alert('Please enter a valid amount');
+      return;
+    }
+
+    // Handle form submission here
+    console.log('Form submitted:', formData);
+    // You can add payment processing logic here
+    alert('Payment form submitted successfully!');
+    setIsModalOpen(false);
+    setFormData({ name: '', email: '', amount: '' });
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setFormData({ name: '', email: '', amount: '' });
+  };
+
+  // Calculate commission and total
+  const commission = formData.amount ? (parseFloat(formData.amount) * 0.03) : 0;
+  const totalAmount = formData.amount ? (parseFloat(formData.amount) + commission) : 0;
+  const convertedAmount = formData.amount ? (parseFloat(formData.amount) * USD_TO_INR_RATE).toFixed(2) : '0.00';
+  const totalAmountINR = totalAmount ? (totalAmount * USD_TO_INR_RATE).toFixed(2) : '0.00';
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -49,7 +105,7 @@ export default function PaymentsPage() {
             Secure Payment <span className="text-blue-600">Methods</span>
           </h1>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Multiple payment options for both advertisers and publishers. 
+            Multiple payment options for both advertisers and publishers.
             Choose the method that works best for you with secure processing.
           </p>
         </div>
@@ -72,11 +128,16 @@ export default function PaymentsPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {paymentMethods.map((method, index) => (
-                <div key={index} className="bg-white rounded-xl p-8 text-center shadow-lg border border-slate-200 hover:shadow-xl transition-shadow">
+                <div
+                  key={index}
+                  className={`bg-white rounded-xl p-8 text-center shadow-lg border border-slate-200 hover:shadow-xl transition-shadow ${method.hasModal ? 'cursor-pointer hover:border-blue-300' : ''
+                    }`}
+                  onClick={() => handleCardClick(method)}
+                >
                   <div className="mb-6">
-                    <img 
-                      src={method.logo} 
-                      alt={`${method.title} logo`} 
+                    <img
+                      src={method.logo}
+                      alt={`${method.title} logo`}
                       className="w-24 h-12 mx-auto object-contain mb-4"
                     />
                   </div>
@@ -102,14 +163,19 @@ export default function PaymentsPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {paymentMethods.map((method, index) => (
-                <div key={index} className="bg-white rounded-xl p-8 text-center shadow-lg border border-slate-200 hover:shadow-xl transition-shadow">
-                  <div className="mb-6">
+                <div
+                  key={index}
+                  className={`bg-white rounded-xl p-8 text-center shadow-lg border border-slate-200 hover:shadow-xl transition-shadow ${method.hasModal ? 'cursor-pointer hover:border-green-300' : ''
+                    }`}
+                  onClick={() => handleCardClick(method)}
+                >
+                  {/* <div className="mb-6">
                     <img 
                       src={method.logo} 
                       alt={`${method.title} logo`} 
                       className="w-24 h-12 mx-auto object-contain mb-4"
                     />
-                  </div>
+                  </div> */}
                   <div className="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
                     <i className={`${method.icon} text-green-600 text-2xl`}></i>
                   </div>
@@ -233,6 +299,149 @@ export default function PaymentsPage() {
           </div>
         </div>
       </section>
+
+      {/* Credit Card Payment Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+            <div className="sticky top-0 bg-white border-b border-slate-200 p-6 rounded-t-xl">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <i className="ri-bank-card-line text-blue-600 text-xl"></i>
+                  </div>
+                  <h2 className="text-xl font-semibold text-slate-900">Credit Card/Debit Card Payment</h2>
+                </div>
+                <button
+                  onClick={closeModal}
+                  className="p-2 hover:bg-slate-100 rounded-lg transition-colors"
+                >
+                  <i className="ri-close-line text-slate-600 text-xl"></i>
+                </button>
+              </div>
+            </div>
+
+            <div className="p-6 space-y-6 sm:space-y-4">
+              {/* Name & Email Fields (side by side on md+) */}
+              <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
+                <div className="flex-1">
+                  <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-2">
+                    Full Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors text-base"
+                    placeholder="Enter your full name"
+                  />
+                </div>
+                <div className="flex-1">
+                  <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors text-base"
+                    placeholder="Enter your email address"
+                  />
+                </div>
+              </div>
+
+              {/* Amount Field */}
+              <div>
+                <label htmlFor="amount" className="block text-sm font-medium text-slate-700 mb-2">
+                  Amount (USD) *
+                </label>
+                <div className="relative">
+                  <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-500 font-medium">$</span>
+                  <input
+                    type="number"
+                    id="amount"
+                    name="amount"
+                    value={formData.amount}
+                    onChange={handleInputChange}
+                    min="1"
+                    step="0.01"
+                    className="w-full pl-8 pr-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors text-base"
+                    placeholder="0.00"
+                  />
+                </div>
+              </div>
+
+              {/* Summary Field */}
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-2">
+                  Summary
+                </label>
+                <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
+                  <div className="space-y-2">
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm text-slate-600">Amount (USD):</span>
+                      <span className="font-medium text-slate-900">
+                        ${formData.amount || '0.00'}
+                      </span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm text-slate-600">Commission (3%):</span>
+                      <span className="font-medium text-orange-600">
+                        ${commission.toFixed(2)}
+                      </span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm text-slate-600">Exchange Rate:</span>
+                      <span className="text-sm text-slate-600">1 USD = ₹{USD_TO_INR_RATE}</span>
+                    </div>
+                    <hr className="border-slate-200" />
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm font-medium text-slate-700">Amount (INR):</span>
+                      <span className="font-semibold text-green-600 text-lg">
+                        ₹{convertedAmount}
+                      </span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm font-semibold text-slate-900">Total Amount (USD):</span>
+                      <span className="font-bold text-blue-700 text-lg">
+                        ${totalAmount.toFixed(2)}
+                      </span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm font-semibold text-slate-900">Total Amount (INR):</span>
+                      <span className="font-bold text-blue-700 text-lg">
+                        ₹{totalAmountINR}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Submit Buttons */}
+              <div className="flex flex-col sm:flex-row gap-3 pt-4">
+                <button
+                  type="button"
+                  onClick={closeModal}
+                  className="flex-1 px-4 py-2 border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-50 font-medium transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  onClick={handleSubmit}
+                  className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium transition-colors"
+                >
+                  Proceed to Payment
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       <Footer />
     </div>
