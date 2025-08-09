@@ -603,7 +603,7 @@ export default function PaymentsPage() {
               <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-2.5">
                 <p className="text-xs text-yellow-700">
                   <i className="ri-information-line mr-1"></i>
-                  <strong>Important Notice</strong> Please use the same name and email ID you used to sign in to AdVolcano so that the payment will be marked against the correct user account.
+                  <strong>Important Notice</strong> Please use the same name and email ID you used to sign in to advolcano.io so that the payment will be marked against the correct user account.
                 </p>
               </div>
 
