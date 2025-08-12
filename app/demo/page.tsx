@@ -114,9 +114,9 @@ export default function DemoPage() {
                     <option value="Enterprise Solutions">Enterprise Solutions - Custom integrations and white-label</option>
                     <option value="RTB Platform">RTB Platform - Real-time bidding capabilities</option>
                   </select>
-                  <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                  {/* <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                     <i className="ri-arrow-down-s-line text-slate-400"></i>
-                  </div>
+                  </div> */}
                 </div>
               </div>
 
