@@ -1,22 +1,31 @@
-
 'use client';
 
-import { useState } from 'react';
+import { useState, ChangeEvent, FormEvent } from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import axiosInstance from '../../components/apiconfig/axios';
+import { API_URLS } from '../../components/apiconfig/api_urls';
+
+interface FormData {
+  interest: string;
+  fullName: string;
+  email: string;
+  company: string;
+  message: string;
+}
 
 export default function DemoPage() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     interest: '',
     fullName: '',
     email: '',
     company: '',
     message: ''
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [submitStatus, setSubmitStatus] = useState<string>('');
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -24,7 +33,7 @@ export default function DemoPage() {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus('');
@@ -36,22 +45,17 @@ export default function DemoPage() {
     }
 
     try {
-      const response = await fetch('/api/demo-request', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: new URLSearchParams({
-          interest: formData.interest,
-          fullName: formData.fullName,
-          email: formData.email,
-          company: formData.company,
-          message: formData.message
-        }).toString()
+      const response = await axiosInstance.post(API_URLS.DEMO.POST_DEMO, {
+        interest: formData.interest,
+        full_name: formData.fullName,
+        email: formData.email,
+        company: formData.company,
+        message: formData.message
       });
 
-      if (response.ok) {
+      if (response.status === 200) {
         setSubmitStatus('Thank you! Your demo request has been submitted successfully.');
+        alert('Thank you! Your demo request has been submitted successfully.');
         setFormData({
           interest: '',
           fullName: '',
@@ -63,6 +67,7 @@ export default function DemoPage() {
         setSubmitStatus('There was an error submitting your request. Please try again.');
       }
     } catch (error) {
+      console.error('Demo request error:', error);
       setSubmitStatus('There was an error submitting your request. Please try again.');
     }
 
