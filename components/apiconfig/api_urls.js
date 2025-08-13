@@ -14,6 +14,11 @@ export const API_URLS = {
       POST_DEMO: "api/request-demo/",
       
     },
+
+     CONTACT: {
+      POST_CONTACT: "api/contact/",
+      
+    },
   
 
  
