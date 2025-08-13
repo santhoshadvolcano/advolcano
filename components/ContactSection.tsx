@@ -223,10 +223,18 @@ export default function ContactSection() {
         <div className="mt-12 sm:mt-16 text-center">
           <h3 className="text-xl sm:text-2xl font-semibold text-stone-900 mb-6 sm:mb-8">Connect With Us</h3>
           <div className="flex justify-center flex-wrap gap-4" suppressHydrationWarning={true}>
-            <a href="#" className="w-12 h-12 flex items-center justify-center bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-full hover:from-indigo-600 hover:to-purple-600 transition-all cursor-pointer shadow-lg">
+            <a href="https://www.linkedin.com/company/advolcano"
+              aria-label="AdVolcano LinkedIn"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-12 h-12 flex items-center justify-center bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-full hover:from-indigo-600 hover:to-purple-600 transition-all cursor-pointer shadow-lg">
               <i className="ri-linkedin-line w-6 h-6 flex items-center justify-center"></i>
             </a>
-            <a href="#" className="w-12 h-12 flex items-center justify-center bg-gradient-to-r from-pink-500 to-rose-500 text-white rounded-full hover:from-pink-600 hover:to-rose-600 transition-all cursor-pointer shadow-lg">
+            <a href="https://www.instagram.com/advolcano.io" 
+              aria-label="AdVolcano Instagram"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-12 h-12 flex items-center justify-center bg-gradient-to-r from-pink-500 to-rose-500 text-white rounded-full hover:from-pink-600 hover:to-rose-600 transition-all cursor-pointer shadow-lg">
               <i className="ri-instagram-line w-6 h-6 flex items-center justify-center"></i>
             </a>
           </div>
