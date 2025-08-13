@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, ChangeEvent } from 'react';
+import { useEffect, useState, ChangeEvent, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -62,7 +62,8 @@ declare global {
   }
 }
 
-export default function PaymentsPage() {
+// Create a separate component that uses useSearchParams
+function PaymentsContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -759,5 +760,30 @@ export default function PaymentsPage() {
       {showSuccessAlert && <SuccessAlert />}
       <Footer />
     </div>
+  );
+}
+
+// Loading component for Suspense fallback
+function PaymentsLoading() {
+  return (
+    <div className="min-h-screen bg-white">
+      <Header />
+      <div className="flex items-center justify-center min-h-[60vh]">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-blue-200 border-t-blue-600 rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-slate-600">Loading payment options...</p>
+        </div>
+      </div>
+      <Footer />
+    </div>
+  );
+}
+
+// Main component with Suspense boundary
+export default function PaymentsPage() {
+  return (
+    <Suspense fallback={<PaymentsLoading />}>
+      <PaymentsContent />
+    </Suspense>
   );
 }
