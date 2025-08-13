@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState, ChangeEvent } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import axiosInstance from '@/components/apiconfig/axios';
@@ -62,6 +63,8 @@ declare global {
 }
 
 export default function PaymentsPage() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState<FormData>({
@@ -142,7 +145,13 @@ export default function PaymentsPage() {
 
   useEffect(() => {
     fetchExchangeRate();
-  }, []);
+
+    // Check if modal should be opened based on URL parameters
+    const method = searchParams.get('method');
+    if (method === 'razorpay') {
+      setIsModalOpen(true);
+    }
+  }, [searchParams]);
 
   // Function to fetch real-time exchange rate from Fixer API
   const fetchExchangeRate = async () => {
@@ -237,6 +246,7 @@ export default function PaymentsPage() {
   const handleCardClick = (method: PaymentMethod) => {
     if (method.hasModal) {
       setIsModalOpen(true);
+      router.push('/payments?method=razorpay');
     }
   };
 
@@ -432,6 +442,7 @@ export default function PaymentsPage() {
     setIsModalOpen(false);
     setFormData({ name: '', email: '', amount: '' });
     setErrors({});
+    router.push('/payments');
   };
 
 
@@ -600,12 +611,13 @@ export default function PaymentsPage() {
 
             <div className="p-5 space-y-3">
               {/* Combined Notice */}
-              
+
               <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-2.5">
                 <p className="text-xs text-yellow-700">
                   <i className="ri-information-line mr-1"></i>
-                  <strong>Important Notice</strong> Please use the same name and email ID you used to sign in to advolcano.io so that the payment will be marked against the correct user account.
-                </p>
+                  <strong>Important Notice :</strong>
+
+                  To reflect the payment into your Advolcano.io account, kindly use email id and account name you have used while registering with Advolcano.io. The payment will be marked against your Advolcano account within 24 hrs to 48 hrs of successful payment.                </p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
