@@ -195,7 +195,7 @@ export default function DetailedAdFormatsSection() {
             Start leveraging our comprehensive ad format solutions to maximize your advertising performance.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://ui.advolcano.io" className="bg-white text-blue-600 px-8 py-4 rounded-lg hover:bg-slate-50 font-semibold text-lg whitespace-nowrap cursor-pointer shadow-sm hover:shadow-md transition-all">
+            <a href="https://ui.advolcano.io/registration" className="bg-white text-blue-600 px-8 py-4 rounded-lg hover:bg-slate-50 font-semibold text-lg whitespace-nowrap cursor-pointer shadow-sm hover:shadow-md transition-all">
               Get Started Now
             </a>
             <a href="/demo" className="border border-blue-300 text-white px-8 py-4 rounded-lg hover:bg-blue-700 font-semibold text-lg whitespace-nowrap cursor-pointer transition-all">

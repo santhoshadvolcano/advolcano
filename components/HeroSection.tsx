@@ -20,7 +20,7 @@ export default function HeroSection() {
             
             <div className="flex flex-col sm:flex-row gap-4">
               <a 
-                href="https://ui.advolcano.io" 
+                href="https://ui.advolcano.io/registration" 
                 className="bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 font-semibold text-lg whitespace-nowrap cursor-pointer text-center shadow-sm hover:shadow-md transition-all"
               >
                 Start Campaign

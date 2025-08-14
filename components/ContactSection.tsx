@@ -101,6 +101,7 @@ export default function ContactSection() {
                     placeholder="John" 
                   />
                 </div>
+              
                 <div>
                   <label className="block text-sm font-medium text-stone-700 mb-1">Last Name</label>
                   <input 

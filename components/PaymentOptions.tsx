@@ -40,7 +40,7 @@ export default function PaymentOptions() {
           <p className="text-gray-600 mb-6">
             All payments are processed securely with 256-bit SSL encryption
           </p>
-          <Link href="/demo" className="bg-red-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-red-700 transition-colors whitespace-nowrap cursor-pointer">
+          <Link href="https://ui.advolcano.io/registration" className="bg-red-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-red-700 transition-colors whitespace-nowrap cursor-pointer">
             Get Started Today
           </Link>
         </div>
