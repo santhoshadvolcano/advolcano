@@ -98,7 +98,7 @@ export default function AdvertiserPage() {
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
-                <a href="https://ui.advolcano.io" className="bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 font-semibold text-lg whitespace-nowrap cursor-pointer text-center shadow-sm hover:shadow-md transition-all">
+                <a href="https://ui.advolcano.io/registration" className="bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 font-semibold text-lg whitespace-nowrap cursor-pointer text-center shadow-sm hover:shadow-md transition-all">
                   Launch Campaign
                 </a>
                 <Link href="/demo" className="border border-slate-300 text-slate-700 px-8 py-4 rounded-lg hover:bg-slate-50 font-semibold text-lg whitespace-nowrap cursor-pointer text-center transition-all">
@@ -206,12 +206,12 @@ export default function AdvertiserPage() {
             Join thousands of successful advertisers who trust AdVolcano for their campaign success.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://ui.advolcano.io" className="bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 font-semibold text-lg whitespace-nowrap cursor-pointer shadow-sm hover:shadow-md transition-all">
+            <a href="https://ui.advolcano.io/registration" className="bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 font-semibold text-lg whitespace-nowrap cursor-pointer shadow-sm hover:shadow-md transition-all">
               Start Campaign Now
             </a>
-            <Link href="/publisher" className="border border-slate-300 text-slate-700 px-8 py-4 rounded-lg hover:bg-slate-50 font-semibold text-lg whitespace-nowrap cursor-pointer transition-all">
+            {/* <Link href="/publisher" className="border border-slate-300 text-slate-700 px-8 py-4 rounded-lg hover:bg-slate-50 font-semibold text-lg whitespace-nowrap cursor-pointer transition-all">
               Become a Publisher
-            </Link>
+            </Link> */}
           </div>
         </div>
       </section>

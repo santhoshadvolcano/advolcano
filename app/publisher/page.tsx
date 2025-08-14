@@ -98,7 +98,7 @@ export default function PublisherPage() {
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
-                <a href="https://ui.advolcano.io" className="bg-green-600 text-white px-8 py-4 rounded-lg hover:bg-green-700 font-semibold text-lg whitespace-nowrap cursor-pointer text-center shadow-sm hover:shadow-md transition-all">
+                <a href="https://ui.advolcano.io/registration" className="bg-green-600 text-white px-8 py-4 rounded-lg hover:bg-green-700 font-semibold text-lg whitespace-nowrap cursor-pointer text-center shadow-sm hover:shadow-md transition-all">
                   Start Monetizing
                 </a>
                 <Link href="/demo" className="border border-slate-300 text-slate-700 px-8 py-4 rounded-lg hover:bg-slate-50 font-semibold text-lg whitespace-nowrap cursor-pointer text-center transition-all">
@@ -206,7 +206,7 @@ export default function PublisherPage() {
             Join our network of successful publishers and start earning more from your traffic today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://ui.advolcano.io" className="bg-green-600 text-white px-8 py-4 rounded-lg hover:bg-green-700 font-semibold text-lg whitespace-nowrap cursor-pointer shadow-sm hover:shadow-md transition-all">
+            <a href="https://ui.advolcano.io/registration" className="bg-green-600 text-white px-8 py-4 rounded-lg hover:bg-green-700 font-semibold text-lg whitespace-nowrap cursor-pointer shadow-sm hover:shadow-md transition-all">
               Join as Publisher
             </a>
             <Link href="/advertiser" className="border border-slate-300 text-slate-700 px-8 py-4 rounded-lg hover:bg-slate-50 font-semibold text-lg whitespace-nowrap cursor-pointer transition-all">
