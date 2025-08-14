@@ -65,7 +65,7 @@ export default function HeroSection() {
               <div className="p-6 space-y-6">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-                    <div className="text-2xl font-bold text-green-600">$24.8K</div>
+                    <div className="text-2xl font-bold text-green-600">24.8K</div>
                     <div className="text-sm text-green-700">Revenue</div>
                     <div className="text-xs text-green-600">+12.5%</div>
                   </div>
@@ -86,7 +86,7 @@ export default function HeroSection() {
                   </div>
                   <div className="flex justify-between text-sm text-slate-500">
                     <span>CTR: 2.4%</span>
-                    <span>CPC: $0.45</span>
+                    <span>CPC: 0.45</span>
                   </div>
                 </div>
                 
@@ -95,15 +95,15 @@ export default function HeroSection() {
                   <div className="space-y-2">
                     <div className="flex justify-between text-sm">
                       <span className="text-slate-600">🇺🇸 United States</span>
-                      <span className="text-slate-900 font-medium">$8.2K</span>
+                      <span className="text-slate-900 font-medium">8.2K</span>
                     </div>
                     <div className="flex justify-between text-sm">
                       <span className="text-slate-600">🇬🇧 United Kingdom</span>
-                      <span className="text-slate-900 font-medium">$4.1K</span>
+                      <span className="text-slate-900 font-medium">4.1K</span>
                     </div>
                     <div className="flex justify-between text-sm">
                       <span className="text-slate-600">🇩🇪 Germany</span>
-                      <span className="text-slate-900 font-medium">$3.8K</span>
+                      <span className="text-slate-900 font-medium">3.8K</span>
                     </div>
                   </div>
                 </div>
