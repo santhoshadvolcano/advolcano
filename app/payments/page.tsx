@@ -618,7 +618,7 @@ function PaymentsContent() {
                   <i className="ri-information-line mr-1"></i>
                   <strong>Important Notice :</strong>
 
-                  To reflect the payment into your Advolcano.io account, kindly use email id and account name you have used while registering with Advolcano.io. The payment will be marked against your Advolcano account within 24 hrs to 48 hrs of successful payment.                </p>
+                  To reflect the payment into your Advolcano.io account, kindly use email id and account name you have used while registering with Advolcano.io. The payment will be marked against your Advolcano account within 30 min to 1 hr of successful payment.                </p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
