@@ -278,7 +278,7 @@ function PaymentsContent() {
       const amount = parseFloat(formData.amount);
       if (isNaN(amount) || amount <= 0) {
         newErrors.amount = 'Please enter a valid amount greater than 0';
-      } else if (amount < 100) {
+      } else if (amount < 0) {
         newErrors.amount = 'Minimum amount is $100';
       }
     }
@@ -368,7 +368,7 @@ function PaymentsContent() {
       // Enhanced Razorpay options with UPI support
 
       const options = {
-        key: 'rzp_test_tgfXXfzhjjdkYx', // Your Razorpay key ID
+        key: 'rzp_live_R752FOAl7GV9vX', // Your Razorpay key ID
         amount: Math.round(totalAmountINR * 100), // Amount in paise
         currency: 'INR',
         name: 'AdVolcano',
