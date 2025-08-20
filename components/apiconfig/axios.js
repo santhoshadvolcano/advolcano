@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "https://advolcano.onrender.com/"; 
+const API_BASE_URL = "https://backend.advolcano.io/"; 
 
 const axiosInstance = axios.create({
   baseURL: API_BASE_URL,
