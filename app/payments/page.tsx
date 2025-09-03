@@ -310,7 +310,7 @@ function PaymentsContent() {
   // Calculate all the required values
   const amountUSD = formData.amount ? parseFloat(formData.amount) : 0;
   const amountINR = amountUSD * exchangeRate;
-  const commission = amountUSD * 0.02; // 2% commission (changed from 0.03)
+  const commission = amountUSD * 0.03; // 3% commission (changed from 0.03)
   const gst = commission * 0.18; // 18% GST on commission
   const totalAmount = amountUSD + commission + gst;
   const totalAmountINR = totalAmount * exchangeRate;
@@ -706,7 +706,7 @@ function PaymentsContent() {
                     <span className="font-medium">${amountUSD.toFixed(2)} / ₹{amountINR.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-slate-600">Platform Fee (2%):</span>
+                    <span className="text-slate-600">Platform Fee (3%):</span>
                     <span className="text-orange-600">${commission.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between items-center">
