@@ -272,16 +272,25 @@ function PaymentsContent() {
     }
 
     // Amount validation
+    // if (!formData.amount) {
+    //   newErrors.amount = 'Amount is required';
+    // } else {
+    //   const amount = parseFloat(formData.amount);
+    //   if (isNaN(amount) || amount <= 100) {
+    //     newErrors.amount = 'Please enter a valid amount greater than 100';
+    //   } else if (amount <= 100) {
+    //     newErrors.amount = 'Minimum amount is $100';
+    //   }
+    // }
     if (!formData.amount) {
       newErrors.amount = 'Amount is required';
     } else {
       const amount = parseFloat(formData.amount);
-      if (isNaN(amount) || amount <= 0) {
-        newErrors.amount = 'Please enter a valid amount greater than 0';
-      } else if (amount < 0) {
+      if (isNaN(amount) || amount < 100) {
         newErrors.amount = 'Minimum amount is $100';
       }
     }
+
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
